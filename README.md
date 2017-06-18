@@ -1,7 +1,9 @@
 # Installer Package for `clang4` R Binaries
 
-The following repository contains the scripts used to create the installer package (.pkg)
-for the `clang4` binaries available on <http://r.research.att.com/libs/>. The scripts 
+The repository contains the scripts used to create an installer package (.pkg)
+for the `clang4` binaries. For those interested, the installer can obtained
+here <https://uofi.box.com/v/r-macos-clang-pkg>. The pre-built binaries this
+installer encloses can be found at <http://r.research.att.com/libs/>. The scripts 
 have the potential to be generalized further so that `.pkg` installers are available 
 to be created for all binaries listed on <http://r.research.att.com/libs/>.
 
