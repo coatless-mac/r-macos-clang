@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+
+#
+# postinstall.sh
+#
+# Copyright (C) 2017 James Joseph Balamuta <balamut2@illinois.edu>
+# 
+# Version 1.0 -- 06/18/17
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+
+# Object of this file is to setup the necessary post script paths
+
+#1 Variable to find/remove
+#2 Config file to search
+remove_config_variable(){
+	
+	pattern=$1
+	config_file=$2
+	
+	# Check if there are matches
+	if grep -q $pattern $config_file; then
+		# Remove matches
+		# '' required due to macOS
+		sed -i '' "/$pattern/d" $config_file
+		echo "Removed configuration line containing: $pattern ..."
+    fi
+}
+
+#1 Variable to find
+#2 Value to append
+#3 Config file to search
+append_config_variable(){
+	pattern=$1
+	append_with=$2
+	config_file=$3
+	
+	# Check if there are matches
+	if grep -q $pattern $config_file; then
+		# Append to the end of the line of each match
+		# '' required due to macOS
+		sed -i '' "\~$pattern~s~$~ $append_with~" $config_file
+		echo "Appended configuration line containing $pattern with $append_with ..."
+	else
+		# Append a new line to end of config file
+		echo "$pattern=$append_with" >> $R_MAKEVARS_LOCAL
+		echo "Added new configuration line $pattern=$append_with to end of file..."
+	fi
+}
+
+add_config_variable(){
+	config_var=$1
+	config_file=$2
+	
+	echo "Adding configuration line $config_var to $config_file ..."
+	
+	# Append a new line to end of config file
+	echo "$config_var" >> $R_MAKEVARS_LOCAL
+}
+
+
+# Local User Makevars file
+R_MAKEVARS_LOCAL=~/.R/Makevars
+
+echo "Checking if file '~/.R/Makevars' exists"
+if [ -f "$R_MAKEVARS_LOCAL" ]; then	
+
+	echo "'~/.R/Makevars' detected. Making a backup at ''~/.R/Makevars.bck'..."
+	
+	# Consider adding [[:space:]]*= for a more selective destruction
+	
+	remove_config_variable "CC" $R_MAKEVARS_LOCAL
+	add_config_variable "CC=/usr/local/clang4/bin/clang" $R_MAKEVARS_LOCAL
+	
+	remove_config_variable "CXX" $R_MAKEVARS_LOCAL
+	add_config_variable "CXX=/usr/local/clang4/bin/clang++" $R_MAKEVARS_LOCAL
+	
+	append_config_variable "LDFLAGS" "-L/usr/local/clang4/lib" $R_MAKEVARS_LOCAL
+	
+else
+	
+	echo "No '~/.R/Makevars' found. Creating one..."
+	
+	# Create the R directory
+	mkdir -p ~/.R
+	
+	# Create the file
+	touch $R_MAKEVARS_LOCAL
+	
+	echo "Filling '~/.R/Makevars' with appropriate compile time implicit variables..."
+	
+	# Fill with appropriate linking statements via heredoc insertion
+	cat <<- EOF > $R_MAKEVARS_LOCAL
+	# The following statements are required to use the clang4 binary
+	CC=/usr/local/clang4/bin/clang
+	CXX=/usr/local/clang4/bin/clang++
+	LDFLAGS=-L/usr/local/clang4/lib
+	# End clang4 inclusion statements
+EOF
+	
+fi
+
+echo "Success! '~/.R/Makevars' has been configured correctly..."
+exit 0
