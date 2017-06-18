@@ -71,8 +71,6 @@ add_line_1before_last '<title>clang4 R Binary</title>' distribution.xml
 # Add background
 add_line_1before_last '<background file="Rlogo.png" mime-type="image/png" />' distribution.xml
 
-###sed -i '' 's/clang4-r-temp.pkg/clang4-r.pkg/g' distribution.xml
-
 echo "Rebuilding the package archive..."
 
 # Rebuild package with distribution hacks
