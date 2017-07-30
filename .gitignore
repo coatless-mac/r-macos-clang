@@ -1,0 +1,4 @@
+ROOT/
+.DS_Store
+*.pkg
+*.tar.gz
