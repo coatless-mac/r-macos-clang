@@ -96,8 +96,14 @@ if [ -f "$R_MAKEVARS_LOCAL" ]; then
     add_config_variable 'CXX11=$CXX' $R_MAKEVARS_LOCAL
     add_config_variable 'CXX14=$CXX' $R_MAKEVARS_LOCAL
     add_config_variable 'CXX17=$CXX' $R_MAKEVARS_LOCAL
+
+	# Remove any instances of the LDFLAG (in the odd case they re-run the installer...)
+	LDFLAGS_PATH_VAR="-L/usr/local/clang4/lib"
 	
-	append_config_variable "LDFLAGS" "-L/usr/local/clang4/lib" $R_MAKEVARS_LOCAL
+	sed -i '' "s~$LDFLAGS_PATH_VAR~~" $R_MAKEVARS_LOCAL
+	
+	# Add only one instance 
+	append_config_variable "LDFLAGS" "$LDFLAGS_PATH_VAR" $R_MAKEVARS_LOCAL
 	
 else
 	
