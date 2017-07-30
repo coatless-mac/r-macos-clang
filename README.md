@@ -43,8 +43,8 @@ curl -O http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz
 # Extract binary onto root directory
 tar fvxz clang-4.0.0-darwin15.6-Release.tar.gz -C /
 
-# Overwrite the ~/.R/Makevars
-cat <<- \EOF > $R_MAKEVARS_LOCAL
+# Overwrites ~/.R/Makevars file if present otherwise creates it
+cat <<- EOF > ~/.R/Makevars
 # The following statements are required to use the clang4 binary
 CC=/usr/local/clang4/bin/clang
 CXX=/usr/local/clang4/bin/clang++
