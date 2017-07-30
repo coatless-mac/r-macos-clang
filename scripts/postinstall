@@ -5,7 +5,7 @@
 #
 # Copyright (C) 2017 James Joseph Balamuta <balamut2@illinois.edu>
 # 
-# Version 1.0 -- 06/18/17
+# Version 1.1 -- 07/30/17
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -56,8 +56,8 @@ append_config_variable(){
 		echo "Appended configuration line containing $pattern with $append_with ..."
 	else
 		# Append a new line to end of config file
-		echo "$pattern=$append_with" >> $R_MAKEVARS_LOCAL
-		echo "Added new configuration line $pattern=$append_with to end of file..."
+		echo "$pattern=$append_with" >> $config_file
+		echo "Added new configuration line $pattern=$append_with to end of $config_file..."
 	fi
 }
 
@@ -68,7 +68,7 @@ add_config_variable(){
 	echo "Adding configuration line $config_var to $config_file ..."
 	
 	# Append a new line to end of config file
-	echo "$config_var" >> $R_MAKEVARS_LOCAL
+	echo "$config_var" >> $config_file
 }
 
 
@@ -114,4 +114,6 @@ EOF
 fi
 
 echo "Success! '~/.R/Makevars' has been configured correctly..."
+
+# If all goes well, exit with true status. 
 exit 0
