@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <installer-gui-script minSpecVersion="1">
     <pkg-ref id="com.rbinaries.clang4"/>
     <options customize="never" require-scripts="false"/>
@@ -11,7 +11,9 @@
     <choice id="com.rbinaries.clang4" visible="false">
         <pkg-ref id="com.rbinaries.clang4"/>
     </choice>
-    <pkg-ref id="com.rbinaries.clang4" version="1.0.0" onConclusion="none">clang4-r-temp.pkg</pkg-ref>
+    <pkg-ref id="com.rbinaries.clang4" version="1.1.0" onConclusion="none">clang4-r-temp.pkg</pkg-ref>
 	<title>clang4 R Binary</title>
 	<background file="Rlogo.png" mime-type="image/png" />
+	<welcome file="WELCOME_DISPLAY.rtf"/>
+	<license file="LICENSE.rtf"/>
 </installer-gui-script>

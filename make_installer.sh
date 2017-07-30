@@ -5,7 +5,7 @@
 #
 # Copyright (C) 2017 James Joseph Balamuta <balamut2@illinois.edu>
 #
-# Version 1.0 -- 06/18/17
+# Version 1.1.0 -- 07/30/17
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ fi
 chmod a+x scripts/*
 
 # Version of installer
-INSTALLER_VERSION=1.0.0
+INSTALLER_VERSION=1.1.0
 
 # Build macOS installer
 pkgbuild --root ROOT \
@@ -71,11 +71,17 @@ add_line_1before_last '<title>clang4 R Binary</title>' distribution.xml
 # Add background
 add_line_1before_last '<background file="Rlogo.png" mime-type="image/png" />' distribution.xml
 
+# Add a welcome screen
+add_line_1before_last '<welcome file="WELCOME_DISPLAY.rtf"/>' distribution.xml
+
+# Add a license file for LLVM
+add_line_1before_last '<license file="LICENSE.rtf"/>' distribution.xml
+
 echo "Rebuilding the package archive..."
 
 # Rebuild package with distribution hacks
 productbuild --distribution distribution.xml \
-	         --resources ./images \
+	         --resources ./build_files \
 		     --package-path ./clang4-r-temp.pkg clang4-r.pkg
 
 # Delete the initial build
