@@ -87,6 +87,15 @@ if [ -f "$R_MAKEVARS_LOCAL" ]; then
 	
 	remove_config_variable "CXX" $R_MAKEVARS_LOCAL
 	add_config_variable "CXX=/usr/local/clang4/bin/clang++" $R_MAKEVARS_LOCAL
+    
+    # Adds configuration variables that specify all C++ standards
+    
+    add_config_variable 'CXX1X=$CXX' $R_MAKEVARS_LOCAL
+    
+    add_config_variable 'CXX98=$CXX' $R_MAKEVARS_LOCAL
+    add_config_variable 'CXX11=$CXX' $R_MAKEVARS_LOCAL
+    add_config_variable 'CXX14=$CXX' $R_MAKEVARS_LOCAL
+    add_config_variable 'CXX17=$CXX' $R_MAKEVARS_LOCAL
 	
 	append_config_variable "LDFLAGS" "-L/usr/local/clang4/lib" $R_MAKEVARS_LOCAL
 	
@@ -103,10 +112,16 @@ else
 	echo "Filling '~/.R/Makevars' with appropriate compile time implicit variables..."
 	
 	# Fill with appropriate linking statements via heredoc insertion
-	cat <<- EOF > $R_MAKEVARS_LOCAL
+	# The - removes tabbing and \ prevents the $CXX variable from being executed
+	cat <<- \EOF > $R_MAKEVARS_LOCAL
 	# The following statements are required to use the clang4 binary
 	CC=/usr/local/clang4/bin/clang
 	CXX=/usr/local/clang4/bin/clang++
+	CXX1X=$CXX
+	CXX98=$CXX
+	CXX11=$CXX
+	CXX14=$CXX
+	CXX17=$CXX
 	LDFLAGS=-L/usr/local/clang4/lib
 	# End clang4 inclusion statements
 EOF
