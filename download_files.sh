@@ -55,4 +55,5 @@ REQUESTED_FILE="clang-4.0.0-darwin15.6-Release.tar.gz"
 
 # Done in working directory
 download_file $LIBS_URL $REQUESTED_FILE
+mkdir -p ROOT/
 extract_file $REQUESTED_FILE
