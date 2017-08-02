@@ -71,7 +71,7 @@ To verify the installer's SHA256 hash use:
 
 ```bash
 openssl sha -sha256 ~/Downloads/clang4-r.pkg
-## SHA256(clang4-r.pkg)= 28d2f713dde78f100bc6b08d8b71c608d55b78f616eb157e06d541f1d002b584
+## SHA256(clang4-r.pkg)= 5349cc3830dd28c03e364adc6772d2638627d90a113c47ef78a60edb3ddab264
 ```
 
 ## Overview of Files
