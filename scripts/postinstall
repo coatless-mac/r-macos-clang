@@ -75,6 +75,12 @@ add_config_variable(){
 # Local User Makevars file
 R_MAKEVARS_LOCAL=~/.R/Makevars
 
+# Location of CC Compiler
+CC_COMPILER=/usr/local/clang4/bin/clang
+
+# Location of CXX Compiler
+CXX_COMPILER=/usr/local/clang4/bin/clang++
+
 echo "Checking if file '~/.R/Makevars' exists"
 if [ -f "$R_MAKEVARS_LOCAL" ]; then	
 
@@ -83,19 +89,19 @@ if [ -f "$R_MAKEVARS_LOCAL" ]; then
 	# Consider adding [[:space:]]*= for a more selective destruction
 	
 	remove_config_variable "CC" $R_MAKEVARS_LOCAL
-	add_config_variable "CC=/usr/local/clang4/bin/clang" $R_MAKEVARS_LOCAL
+	add_config_variable "CC=$CC_COMPILER" $R_MAKEVARS_LOCAL
 	
 	remove_config_variable "CXX" $R_MAKEVARS_LOCAL
-	add_config_variable "CXX=/usr/local/clang4/bin/clang++" $R_MAKEVARS_LOCAL
+	add_config_variable "CXX=$CXX_COMPILER" $R_MAKEVARS_LOCAL
     
     # Adds configuration variables that specify all C++ standards
     
-    add_config_variable 'CXX1X=$CXX' $R_MAKEVARS_LOCAL
+    add_config_variable "CXX1X=$CXX_COMPILER" $R_MAKEVARS_LOCAL
     
-    add_config_variable 'CXX98=$CXX' $R_MAKEVARS_LOCAL
-    add_config_variable 'CXX11=$CXX' $R_MAKEVARS_LOCAL
-    add_config_variable 'CXX14=$CXX' $R_MAKEVARS_LOCAL
-    add_config_variable 'CXX17=$CXX' $R_MAKEVARS_LOCAL
+    add_config_variable "CXX98=$CXX_COMPILER" $R_MAKEVARS_LOCAL
+    add_config_variable "CXX11=$CXX_COMPILER" $R_MAKEVARS_LOCAL
+    add_config_variable "CXX14=$CXX_COMPILER" $R_MAKEVARS_LOCAL
+    add_config_variable "CXX17=$CXX_COMPILER" $R_MAKEVARS_LOCAL
 
 	# Remove any instances of the LDFLAG (in the odd case they re-run the installer...)
 	LDFLAGS_PATH_VAR="-L/usr/local/clang4/lib"
@@ -118,16 +124,16 @@ else
 	echo "Filling '~/.R/Makevars' with appropriate compile time implicit variables..."
 	
 	# Fill with appropriate linking statements via heredoc insertion
-	# The - removes tabbing and \ prevents the $CXX variable from being executed
-	cat <<- \EOF > $R_MAKEVARS_LOCAL
+	# The - removes tabbing
+	cat <<- EOF > $R_MAKEVARS_LOCAL
 	# The following statements are required to use the clang4 binary
-	CC=/usr/local/clang4/bin/clang
-	CXX=/usr/local/clang4/bin/clang++
-	CXX1X=$CXX
-	CXX98=$CXX
-	CXX11=$CXX
-	CXX14=$CXX
-	CXX17=$CXX
+	CC=$CC_COMPILER
+	CXX=$CXX_COMPILER
+	CXX1X=$CXX_COMPILER
+	CXX98=$CXX_COMPILER
+	CXX11=$CXX_COMPILER
+	CXX14=$CXX_COMPILER
+	CXX17=$CXX_COMPILER
 	LDFLAGS=-L/usr/local/clang4/lib
 	# End clang4 inclusion statements
 EOF

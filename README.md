@@ -44,15 +44,15 @@ curl -O http://r.research.att.com/libs/clang-4.0.0-darwin15.6-Release.tar.gz
 tar fvxz clang-4.0.0-darwin15.6-Release.tar.gz -C /
 
 # Overwrites ~/.R/Makevars file if present otherwise creates it
-cat <<- \EOF > ~/.R/Makevars
+cat <<- EOF > ~/.R/Makevars
 # The following statements are required to use the clang4 binary
 CC=/usr/local/clang4/bin/clang
 CXX=/usr/local/clang4/bin/clang++
-CXX1X=$CXX
-CXX98=$CXX
-CXX11=$CXX
-CXX14=$CXX
-CXX17=$CXX
+CXX1X=/usr/local/clang4/bin/clang++
+CXX98=/usr/local/clang4/bin/clang++
+CXX11=/usr/local/clang4/bin/clang++
+CXX14=/usr/local/clang4/bin/clang++
+CXX17=/usr/local/clang4/bin/clang++
 LDFLAGS=-L/usr/local/clang4/lib
 # End clang4 inclusion statements
 EOF
@@ -71,7 +71,7 @@ To verify the installer's SHA256 hash use:
 
 ```bash
 openssl sha -sha256 ~/Downloads/clang4-r.pkg
-## SHA256(clang4-r.pkg)= 5349cc3830dd28c03e364adc6772d2638627d90a113c47ef78a60edb3ddab264
+## SHA256(clang4-r.pkg)= 8b48e3229415d2a564f84345430a0f600e5f7e6d05b51139d4dcd860f1cc029f
 ```
 
 ## Overview of Files
