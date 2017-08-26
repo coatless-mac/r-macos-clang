@@ -35,7 +35,7 @@ fi
 chmod a+x scripts/*
 
 # Version of installer
-INSTALLER_VERSION=1.1.0
+INSTALLER_VERSION=1.2.0
 
 # Build macOS installer
 pkgbuild --root ROOT \
