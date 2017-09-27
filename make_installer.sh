@@ -35,7 +35,7 @@ fi
 chmod a+x scripts/*
 
 # Version of installer
-INSTALLER_VERSION=1.2.0
+INSTALLER_VERSION=1.3.0
 
 # Build macOS installer
 pkgbuild --root ROOT \
@@ -82,6 +82,7 @@ echo "Rebuilding the package archive..."
 # Rebuild package with distribution hacks
 productbuild --distribution distribution.xml \
 	         --resources ./build_files \
+			 --sign "Developer ID Installer: James Balamuta" \
 		     --package-path ./clang4-r-temp.pkg clang4-r.pkg
 
 # Delete the initial build

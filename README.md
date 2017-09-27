@@ -1,5 +1,5 @@
 
-# Installer Package for `clang4` R Binaries [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
+# Installer Package for `clang4` R Binaries [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 The repository contains the scripts used to create an installer package (.pkg)
 for the `clang4` binaries. For those interested, the installer can obtained
@@ -7,6 +7,8 @@ here <https://uofi.box.com/v/r-macos-clang-pkg>. The pre-built binaries this
 installer encloses can be found at <http://r.research.att.com/libs/>. The scripts 
 have the potential to be generalized further so that `.pkg` installers are available 
 to be created for all binaries listed on <http://r.research.att.com/libs/>.
+
+**Financial support was provided to sign the installer by [Professor Timothy Bates](http://www.ed.ac.uk/profile/timothy-bates) of the [University of Edinburgh](http://www.ed.ac.uk/).**
 
 ## How do I use the installer?
 
@@ -61,18 +63,21 @@ EOF
 xcode-select --install
 ```
 
-## Verify the Installer {#verify-installer}
+## Verify the Installer
 
-Sadly, I'm not able to sign the installer using [developer credentials](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html) as I'm not part of the [Apple Developer program](https://developer.apple.com/) that costs [$99 per year](https://developer.apple.com/support/purchase-activation/). If you wish to donate $99 or an amount towards that figure so that I could digitally sign the installer, then please get in touch via <http://thecoatlessprofessor.com/contact/>. 
+Thanks to the **financial support provided by [Professor Timothy Bates](http://www.ed.ac.uk/profile/timothy-bates) of
+the [University of Edinburgh](http://www.ed.ac.uk/)** to join the [Apple Developer program](https://developer.apple.com/).
+The installer is now signed using [developer credentials](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html).
 
-With this being said, the code used to generate the installer has been made publically available under an open source license (GPL-3). Furthermore, I also provide the SHA 256 value of the installer file to verify that it is indeed genuine. 
+As a result, the installer should have a "lock" icon in the upper right corner:
 
-To verify the installer's SHA256 hash use: 
+![Signed Installer Lock Icon](readme_img/lock_icon.png)
 
-```bash
-openssl sha -sha256 ~/Downloads/clang4-r.pkg
-## SHA256(clang4-r.pkg)= 8b48e3229415d2a564f84345430a0f600e5f7e6d05b51139d4dcd860f1cc029f
-```
+Clicking the lock icon will reveal the signed developer certificate:
+
+![Signed Developer Certificate](readme_img/signed_certificate.png)
+
+With this being said, the code used to generate the installer has been made publically available under an open source license (GPL >= 2). 
 
 ## Overview of Files
 
