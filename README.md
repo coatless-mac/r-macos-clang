@@ -1,28 +1,37 @@
+**This installer has been superceded by the 
+[r-macOS-rtools installer](https://github.com/coatless/r-macos-rtools),
+which automatically installs and configures the _R_ toolchain for
+compiled code on macOS, e.g. XCode Command Line Tools, `clang4`, 
+and `gfortran`.**
 
 # Installer Package for `clang4` R Binaries [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
-The repository contains the scripts used to create an installer package (.pkg)
-for the `clang4` binaries used to build the _R_ version hosted by the 
-[Comprehensive R Archival Network (CRAN)](https://cran.r-project.org/bin/macosx/). 
-For those interested, the installer can obtained
-here <https://uofi.box.com/v/r-macos-clang-pkg>. The pre-built binaries this
-installer encloses can be found at <http://r.research.att.com/libs/>. The scripts 
-have the potential to be generalized further so that `.pkg` installers are available 
-to be created for all binaries listed on <http://r.research.att.com/libs/>.
+The repository contains the scripts used to create a macOS installer package (`.pkg`)
+for the `clang4` binaries. For those interested, the installer can be obtained
+on either the project's [Release page](https://github.com/coatless/r-macos-clang/releases/latest)
+or through <http://go.illinois.edu/r-macos-clang-pkg>. 
 
-**Note:** The `clang4` binary installer provides support _only_ for the CRAN built version
-of _R_ for macOS. The installer does _not_ provide support for compiled code on 
-[Anaconda](https://anaconda.org/) or [Homebrew](https://brew.sh/) versions of _R_.
-Please see the [Anaconda compiler tools](https://conda.io/docs/user-guide/tasks/build-packages/compiler-tools.html) 
-entry for information about Anaconda's compile infrastructure.
+The pre-built binaries this installer setups during the installation
+can be found at: <http://r.research.att.com/libs/>. 
 
-**Financial support was provided to sign the installer by [Professor Timothy Bates](http://www.ed.ac.uk/profile/timothy-bates) of the [University of Edinburgh](http://www.ed.ac.uk/).**
+The scripts have the potential to be generalized further so that 
+`.pkg` installers are available to be created for all binaries
+listed on <http://r.research.att.com/libs/>.
 
-## How do I use the installer?
+**Financial support was provided to sign the installer by 
+[Professor Timothy Bates](http://www.ed.ac.uk/profile/timothy-bates) 
+of the [University of Edinburgh](http://www.ed.ac.uk/).**
 
-Download it from <https://uofi.box.com/v/r-macos-clang-pkg>, open the installer by right clicking to bring up menu and selecting "Open". From here, navigate through it like a normal macOS installer.
+## How do I use the installer? 
 
-If you have yet to install [Xcode Command Line Interface Tools ("Xcode CLI")](https://developer.apple.com/library/content/technotes/tn2339/_index.html#//apple_ref/doc/uid/DTS40014588-CH1-WHAT_IS_THE_COMMAND_LINE_TOOLS_PACKAGE_), you will then need to open Terminal (Applications/Utilities/Terminal) and type:
+Download it from <http://go.illinois.edu/r-macos-clang-pkg>, open the 
+installer by right clicking to bring up menu and selecting "Open". 
+From here, navigate through it like a normal macOS installer.
+
+If you have yet to install
+[Xcode Command Line Interface Tools ("Xcode CLI")](https://developer.apple.com/library/content/technotes/tn2339/_index.html#//apple_ref/doc/uid/DTS40014588-CH1-WHAT_IS_THE_COMMAND_LINE_TOOLS_PACKAGE_), 
+you will then need to open Terminal (Applications/Utilities/Terminal) 
+and type:
 
 ```bash
 xcode-select --install
