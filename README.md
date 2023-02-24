@@ -1,15 +1,15 @@
 **This installer has been superceded by the 
-[r-macOS-rtools installer](https://github.com/coatless/r-macos-rtools),
+[r-macOS-rtools installer](https://github.com/coatless-mac/r-macos-rtools),
 which automatically installs and configures the _R_ toolchain for
-compiled code on macOS, e.g. XCode Command Line Tools, `clang4`, 
-and `gfortran`.**
+compiled code on macOS.
+
+**We do not recommend using this installer as it is notably out of date.**
 
 # Installer Package for `clang4` R Binaries [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 The repository contains the scripts used to create a macOS installer package (`.pkg`)
 for the `clang4` binaries. For those interested, the installer can be obtained
-on either the project's [Release page](https://github.com/coatless/r-macos-clang/releases/latest)
-or through <http://go.illinois.edu/r-macos-clang-pkg>. 
+on either the project's [Release page](https://github.com/coatless-mac/r-macos-clang/releases/latest).
 
 The pre-built binaries this installer setups during the installation
 can be found at: <http://r.research.att.com/libs/>. 
@@ -24,7 +24,7 @@ of the [University of Edinburgh](http://www.ed.ac.uk/).**
 
 ## How do I use the installer? 
 
-Download it from <http://go.illinois.edu/r-macos-clang-pkg>, open the 
+Download it from the project's [Release page](https://github.com/coatless-mac/r-macos-clang/releases/latest), open the 
 installer by right clicking to bring up menu and selecting "Open". 
 From here, navigate through it like a normal macOS installer.
 
